@@ -18,8 +18,8 @@ const Navbar = () => {
     }
 
   return (
-    <div className='flex items-center justify-between py-5 font-medium'>
-        <Link to='/'><img src={assets.logo} className='w-36' alt='logo' /></Link>
+    <div className='flex items-center justify-between py-4 font-medium'>
+        <Link to='/'><img src={assets.logo} className='h-[3.5rem] md:h-16 w-auto object-contain' alt='logo' /></Link>
         <ul className='hidden sm:flex gap-5 text-sm text-gray-700'>
             <NavLink to='/' className='flex flex-col items-center gap-1'>
                 <p>HOME</p>
@@ -39,7 +39,7 @@ const Navbar = () => {
             </NavLink>
         </ul>
 
-        <div className='flex items-center gap-6'>
+        <div className='flex items-center gap-4 md:gap-6'>
             <img onClick={()=> setShowSearch(true)} src={assets.search_icon} className='w-5 cursor-pointer' alt="search-icon" />
             <div className='group relative'>
                 <img onClick={()=> token ? null : navigate('/login')} src={assets.profile_icon} alt="profile-icon" className='w-5 cursor-pointer' />

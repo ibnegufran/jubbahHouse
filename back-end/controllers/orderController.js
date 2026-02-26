@@ -9,10 +9,10 @@ const deliveryCharge = 10;
 
 //Gateway initialize
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-const razorpayInstance = new Razorpay({
-    key_id: process.env.RAZORPAY_KEY_ID,
-    key_secret: process.env.RAZORPAY_KEY_SECRET 
-});
+// const razorpayInstance = new Razorpay({
+//     key_id: process.env.RAZORPAY_KEY_ID,
+//     key_secret: process.env.RAZORPAY_KEY_SECRET 
+// });
 
 //Placing orders using COD method
 const placeOrder = async (req,res) => {

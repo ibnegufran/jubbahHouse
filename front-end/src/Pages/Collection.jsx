@@ -13,7 +13,7 @@ const Collection = () => {
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
   const [sortType, setSortType] = useState('relevant');
-
+const [open, setOpen] = useState(false);
   const toggleCategory = (e) => {
     if(category.includes(e.target.value)){
       setCategory(prev=> prev.filter(item => item !== e.target.value))
@@ -71,68 +71,126 @@ const Collection = () => {
   },[sortType])
 
   return (
-    <div className='flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t'>
-      {/* Filer Options */}
-      <div className='min-w-60'>
-        <p onClick={()=>setShowFilter(!showFilter)} className='my-2 text-xl flex items-center cursor-pointer gap-2'>FILTERS
-          <img src={assets.dropdown_icon} className={`h-3 sm:hidden ${showFilter ? 'rotate-90' : ''}`} alt="" />
-        </p>
-        {/* Category Filter */}
-        <div className={`border border-gray-300 pl-5 py-3 mt-6 ${showFilter ? '' : 'hidden'} sm:block`}>
-          <p className='mb-3 text-sm font-medium'>CATEGORIES</p>
-          <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
-            <p className='flex gap-2'>
-              <input type='checkbox' className='w-3' value={'Men'} onChange={toggleCategory}/> Men 
-            </p>
-            <p className='flex gap-2'>
-              <input type='checkbox' className='w-3' value={'Women'} onChange={toggleCategory}/> Women 
-            </p>
-            <p className='flex gap-2'>
-              <input type='checkbox' className='w-3' value={'Kids'} onChange={toggleCategory}/> Kids
-            </p>
+  <div className="bg-brand-secondary min-h-screen py-12 border-t">
+
+    <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-10">
+
+      {/* ================= FILTER SIDEBAR ================= */}
+      <div className="lg:w-64 bg-white rounded-2xl shadow-md p-6 h-fit">
+
+        <h2 className="text-xl font-semibold text-brand-primary mb-6">
+          Filters
+        </h2>
+
+        {/* CATEGORY */}
+        <div className="mb-8">
+          <p className="text-sm font-semibold text-brand-dark mb-3">
+            Categories
+          </p>
+
+          <div className="space-y-3 text-sm text-gray-600">
+            {["Men", "Kids"].map((cat) => (
+              <label key={cat} className="flex items-center gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  value={cat}
+                  onChange={toggleCategory}
+                  className="accent-[#0F3D3E]"
+                />
+                {cat}
+              </label>
+            ))}
           </div>
         </div>
-        {/* Subcategory Filter */}
-        <div className={`border border-gray-300 pl-5 py-3 my-5 ${showFilter ? '' : 'hidden'} sm:block`}>
-          <p className='mb-3 text-sm font-medium'>TYPE</p>
-          <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
-            <p className='flex gap-2'>
-              <input type='checkbox' className='w-3' value={'Topwear'} onChange={toggleSubCategory}/> Topwear
-            </p>
-            <p className='flex gap-2'>
-              <input type='checkbox' className='w-3' value={'Bottomwear'} onChange={toggleSubCategory}/> Bottomwear
-            </p>
-            <p className='flex gap-2'>
-              <input type='checkbox' className='w-3' value={'Winterwear'} onChange={toggleSubCategory}/> Winterwear
-            </p>
+
+        {/* SUBCATEGORY */}
+        <div>
+          <p className="text-sm font-semibold text-brand-dark mb-3">
+            Jubbah Type
+          </p>
+
+          <div className="space-y-3 text-sm text-gray-600">
+            {["Omani", "Arabic", "Classic", "Modern"].map((type) => (
+              <label key={type} className="flex items-center gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  value={type}
+                  onChange={toggleSubCategory}
+                  className="accent-[#0F3D3E]"
+                />
+                {type}
+              </label>
+            ))}
           </div>
         </div>
+
       </div>
 
-      {/* Right Side */}
-      <div className='flex-1'>
-        <div className='flex justify-between  text-base sm:text-2xl mb-4'>
-          <Title text1={'ALL'} text2={'COLLECTIONS'} />
-          {/* Product Sort */}
-          <select onChange={(e)=> setSortType(e.target.value)} className='border-2 border-gray-300 text-sm px-2'>
-            <option value="relavent">Sort by: Relevant</option>
-            <option value="low-high">Sort by: Low to High</option>
-            <option value="high-low">Sort by: High to Low</option>
-          </select>
+      {/* ================= PRODUCT SECTION ================= */}
+      <div className="flex-1">
+
+        {/* HEADER */}
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+
+          <h1 className="text-3xl font-semibold text-brand-primary">
+            Our Premium Collection
+          </h1>
+
+         <div className="relative w-64">
+  <button
+    onClick={() => setOpen(!open)}
+    className="w-full bg-white border border-brand-primary rounded-lg px-4 py-2 flex justify-between items-center shadow-sm hover:border-brand-accent transition"
+  >
+    <span className="text-brand-dark">
+      {sortType === "low-high"
+        ? "Price: Low to High"
+        : sortType === "high-low"
+        ? "Price: High to Low"
+        : "Sort by: Relevant"}
+    </span>
+    <span className="text-brand-primary">▼</span>
+  </button>
+
+  {open && (
+    <div className="absolute mt-2 w-full bg-white border rounded-lg shadow-lg z-50">
+      <p onClick={()=>setSortType("relevant")} className="px-4 py-2 hover:bg-brand-accent hover:text-white cursor-pointer">Relevant</p>
+      <p onClick={()=>setSortType("low-high")} className="px-4 py-2 hover:bg-brand-accent hover:text-white cursor-pointer">Low to High</p>
+      <p onClick={()=>setSortType("high-low")} className="px-4 py-2 hover:bg-brand-accent hover:text-white cursor-pointer">High to Low</p>
+    </div>
+  )}
+</div>
+
         </div>
 
-        {/* Map Products */}
-        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
-          {
-            filterProducts.map((item,index)=>(
-              <ProductItem key={index} name={item.name} id={item._id} price={item.price} image={item.image}/>
-            ))
-          }
+        {/* GOLD DIVIDER */}
+        <div className="w-20 h-1 bg-brand-accent mb-8"></div>
+
+        {/* PRODUCTS GRID */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+          {filterProducts.map((item, index) => (
+            <div
+  key={index}
+  className="bg-white rounded-2xl shadow-md hover:shadow-xl 
+  transition duration-300 overflow-hidden"
+>
+              <ProductItem
+                name={item.name}
+                id={item._id}
+                price={item.price}
+                image={item.image}
+              />
+            </div>
+          ))}
+
         </div>
+
       </div>
+
     </div>
 
-  )
+  </div>
+)
 }
 
 export default Collection

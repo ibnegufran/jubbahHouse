@@ -1,29 +1,47 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
-import {assets} from '../assets/assets.js';
+import { Link } from "react-router-dom";
 
-const Hero = () => {
+export default function Hero() {
   return (
-    <div className='flex flex-col sm:flex-row border border-gray-400'>
-        {/* Hero Left */}
-        <div className='w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0'>
-            <div className='text-[##414141]'>
-                <div className="flex items-center gap-2">
-                    <p className='w-8 md:w-11 h-[2px] bg-[#414141]'></p>
-                    <p className='font-medium text-sm and md:text-base'>OUR BESTSELLER</p>
-                </div>
-                <h1 className='prata-regular text-3xl sm:py-3 lg:text-5xl leading-relaxed'>LATEST ARRIVALS</h1>
-                <div className="flex items-center gap-2">
-                    <p className='font-semibold text-sm md:text-base'>SHOP NOW</p>
-                    <p className='w-8 md:w-11 h-[1px] bg-[#414141]'></p>
-                </div>
-            </div>
+    <section className="bg-brand-secondary min-h-[90vh] flex items-center">
+      <div className="container mx-auto px-6 grid  md:grid-cols-2 gap-10 items-center">
+        
+        {/* Left Content */}
+        <div className="order-2 md:order-1">
+          <h1 className="text-4xl md:text-5xl font-bold text-brand-primary leading-tight">
+            Premium Jubbah Collection 2026
+          </h1>
+
+          <p className="mt-4 text-gray-700 text-lg">
+            Elegant & Modest Wear for Kids and Men.
+            Crafted with comfort, tradition & modern style.
+          </p>
+
+          <div className="mt-6 flex gap-4">
+            <Link to="/collection" className="bg-brand-primary text-white px-6 py-3 rounded-md hover:bg-brand-accent transition">
+              Shop Kids
+            </Link>
+
+            <Link to="/collection" className="border-2 border-brand-accent text-brand-accent px-6 py-3 rounded-md hover:bg-brand-accent hover:text-white transition">
+              Shop Men
+            </Link>
+          </div>
         </div>
 
-        {/* Hero Right */}
-        <img className='w-full sm:w-1/2' src={assets.hero_img} alt="hero-img" />
-    </div>
+        {/* Right Images */}
+        <div className="relative flex justify-center order-1 md:order-2 items-center ">
+          <img 
+            src="./src/assets/hero8.png" 
+            alt="Kids Jubbah"
+            className="w-[80vw] md:w-[50vw] object-contain"
+          />
+          {/* <img 
+            src="./src/assets/men.png" 
+            alt="Men Jubbah"
+            className="w-48 md:w-full"
+          /> */}
+        </div>
+
+      </div>
+    </section>
   )
 }
-
-export default Hero

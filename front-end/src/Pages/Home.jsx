@@ -5,15 +5,17 @@ import LatestCollection from '../Components/LatestCollection'
 import BestSeller from '../Components/BestSeller'
 import OurPolicy from '../Components/OurPolicy'
 import NewsletterBox from '../Components/NewsletterBox'
+import TrendingJubbah from '../Components/TrendingJubbah'
 
 const Home = () => {
   return (
     <div>
       <Hero />
       <LatestCollection />
-      <BestSeller />
+      {/* <BestSeller /> */}
+      <TrendingJubbah />
       <OurPolicy />
-      <NewsletterBox />
+      {/* <NewsletterBox /> */}
     </div>
   )
 }
