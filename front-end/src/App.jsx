@@ -16,6 +16,7 @@ import Footer from './Components/Footer';
 import SearchBar from './Components/SearchBar';
 import { ToastContainer , toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import WhatsAppButton from './Components/WhatsAppButton';
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/verify" element={<Verify />}/>
       </Routes>
       <Footer />
+      <WhatsAppButton />
 
     </div>
   )
