@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import hero from "/src/assets/hero8.png"
 export default function Hero() {
   return (
     <section className="bg-brand-secondary min-h-[90vh] flex items-center">
@@ -30,7 +30,7 @@ export default function Hero() {
         {/* Right Images */}
         <div className="relative flex justify-center order-1 md:order-2 items-center ">
           <img 
-            src="./src/assets/hero8.png" 
+            src={hero} 
             alt="Kids Jubbah"
             className="w-[80vw] md:w-[50vw] object-contain"
           />

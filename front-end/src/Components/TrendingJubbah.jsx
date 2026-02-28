@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import video from "/src/assets/vid.mp4";
+import trendingImg from "/src/assets/trending.png";
 const TrendingJubbah = () => {
 
   const productId = "12345"; // 👈 replace with dynamic id later
@@ -32,7 +33,7 @@ const TrendingJubbah = () => {
             className="group relative w-full h-[420px] rounded-3xl overflow-hidden shadow-xl bg-black order-2 lg:order-2"
           >
             <img
-              src="./src/assets/trending.png"
+              src={trendingImg}
               alt="Trending Jubbah"
               className="w-full h-full object-contain transition duration-500 group-hover:scale-105"
             />
@@ -60,7 +61,7 @@ const TrendingJubbah = () => {
             className="group relative w-full h-[420px] rounded-3xl overflow-hidden shadow-xl bg-black order-1 lg:order-2"
           >
             <video
-              src="./src/assets/vid.mp4"
+              src={video}
               muted
               autoPlay
               loop

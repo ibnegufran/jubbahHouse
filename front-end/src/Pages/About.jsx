@@ -3,7 +3,7 @@ import React from 'react'
 import Title from '../Components/Title'
 import { assets } from '../assets/assets.js'
 import NewsletterBox from '../Components/NewsletterBox'
-
+import aboutImg from "/src/assets/about.png"
 const About = () => {
   return (
   <div className="bg-brand-secondary">
@@ -28,7 +28,7 @@ const About = () => {
           <div className="flex-1">
             <div className="rounded-3xl overflow-hidden shadow-xl bg-white">
               <img
-                src="/src/assets/about.png"
+                src={aboutImg}
                 alt="About Jubbah House"
                 className="w-full h-[350px] object-cover"
               />
